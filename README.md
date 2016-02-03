@@ -3,16 +3,26 @@ users mongo bundle
 
 Symfony 2.8
 
-запуск проекта php app/console cache:clear;php app/console server:run
-посмотреть можно http://localhost:8000/
-после запуска надо зарегистрировать пользователя, он будет с правами пользователя
-потом в админке поменять ему права андминистратора
-затем в app/config/security.yml повысить уровень доступа 
-- { path: ^/, roles: ROLE_USER  } => - { path: ^/, roles: ROLE_ADMIN  }
-для полноценной работы в mongo надо создать индекс в коллекции users по полю name
+git clone https://github.com/mudruy/tracker.git . <br />
+wget https://getcomposer.org/download/1.0.0-alpha11/composer.phar <br />
+php composer.phar update <br />
+надо будет ввести параметры подключения к mysql бд <br />
 
-реализована регистрация, аутефикация, CRUD 
-пользователи храняться в MongoDB
-криптование пароля bcrypt
-использовано Symfony Forms, Doctrine MongoDB ODM
-Bootstrap из интеренета бесплатный
+
+на локальном проверочном сайте размещаем картинку  <br />
+<img src="http://localhost:8000/banner" width="0" height="0" style="visibility: hidden;" /> <br />
+
+Если база еще не создана, можно ее создать <br /> 
+php app/console doctrine:database:create <br />
+
+Потом надо забросить структуры базы  <br />
+php app/console doctrine:schema:update --force <br />
+
+Грузим инит данные - фиктуры <br />
+php app/console doctrine:fixtures:load <br />
+
+Запускаем веб сервер тестовый <br />
+php app/console cache:clear;php app/console server:run <br />
+
+
+смотрим http://localhost:8000/ <br />

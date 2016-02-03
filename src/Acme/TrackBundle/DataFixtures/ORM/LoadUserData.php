@@ -9,7 +9,7 @@ class LoadUserData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $Track = new Track();
             $Track->setDomain('test.com');
             $Track->setRaw(rand(100, 1000));
@@ -20,16 +20,6 @@ class LoadUserData implements FixtureInterface
             $manager->flush();
         }
         
-        for ($i = 1; $i <= 7; $i++) {
-            $Track = new Track();
-            $Track->setDomain('googl.com');
-            $Track->setRaw(rand(100, 1000));
-            $Track->setUniq(rand(50, 200));
-            $Track->setDate(new \DateTime("-$i day"));
-
-            $manager->persist($Track);
-            $manager->flush();
-        }
         
     }
 }
