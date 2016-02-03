@@ -1,0 +1,43 @@
+{% extends 'AcmeUsersBundle::index.html.twig' %}
+
+
+{% block title %}Login{% endblock %}
+{% block content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+            <div class="box box-primary">
+                
+                {% if error %}
+                    <div class="callout callout-info lead alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sign in to start your session</h3>
+                </div>
+                <form class="well form-horizontal" role="form" action="{{ path('acme_users_login_check') }}" method="post">
+                    <div class="box-body">
+                         <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="_password" />
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_target_path" value="{{ path('acme_users_show') }}" />
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                    <div class="box-footer">
+                        <a href="{{ path('acme_users_register')}}">Register</a>
+                        <button class="btn btn-primary" type="submit">Sign In</button>
+                    </div>
+
+                </form>
+            </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

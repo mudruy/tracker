@@ -1,0 +1,28 @@
+Acme\UsersBundle\Document\User:
+    repositoryClass: Acme\UsersBundle\Repository\UserRepository
+    fields:
+        id:
+            id:  true
+        name:
+            type: string
+            index: true
+            unique: true
+            order: true
+        password:
+            type: string
+        roles:
+            type: collection
+    properties:
+        name:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
+        roles:
+            - NotBlank: ~
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+    type: document
+#    referenceMany:
+#        groups:
+#          targetDocument: \Acme\UsersBundle\Document\Group
+    

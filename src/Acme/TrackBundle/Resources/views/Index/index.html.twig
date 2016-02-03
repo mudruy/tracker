@@ -1,0 +1,40 @@
+{% extends 'AcmeTrackBundle::index.html.twig' %}
+
+{% block title %}Stat{% endblock %}
+{% block content %}
+    
+<section class="content">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class='box'>
+                    <div class='box-header'>
+                        <ul>
+                            <h3 class="box-title">Statistic Table</h3>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                      <th>Date</th>
+                      <th>Domain</th>
+                      <th>Raw</th>
+                      <th>Uniq</th>
+                    </tr>
+                    {% for item in stat %}
+                    <tr>
+                      <td>{{ item.date|date("Y-m-d") }}</td>
+                      <td>{{ item.domain }}</td>
+                      <td>{{ item.raw }}</td>
+                      <td>{{ item.uniq }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody></table>
+                </div>
+                {{ include('AcmeTrackBundle::paginator.html.twig', { 'thisPage': thisPage , 'maxPages': maxPages, 'routeName':routeName }) }}
+            </div>
+        </div>
+</section>
+{% endblock %}

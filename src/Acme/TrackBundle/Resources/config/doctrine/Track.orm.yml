@@ -1,0 +1,21 @@
+Acme\TrackBundle\Entity\Track:
+    repositoryClass: Acme\TrackBundle\Repository\TrackRepository
+    type: entity
+    table: track
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        domain:
+            type: string
+            length: 255
+        raw:
+            type: integer
+        uniq:
+            type: integer
+        date:
+            type: date
+    uniqueConstraints:
+        name_index:
+            columns: [ domain, date ]

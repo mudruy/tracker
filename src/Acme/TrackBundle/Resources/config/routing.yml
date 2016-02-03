@@ -1,0 +1,6 @@
+acme_track_homepage:
+    path:     /{page}
+    defaults: { _controller: AcmeTrackBundle:Index:index, page: 1 }
+acme_track_banner:
+    path:     /banner
+    defaults: { _controller: AcmeTrackBundle:Index:banner }    

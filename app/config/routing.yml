@@ -1,0 +1,11 @@
+acme_track:
+    resource: "@AcmeTrackBundle/Resources/config/routing.yml"
+    prefix:   /
+
+acme_users:
+    resource: "@AcmeUsersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
